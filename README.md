@@ -1,13 +1,13 @@
 # Autable
 
 Short for "auto-table", the idea is that you should be able to feed a set of values
-into SQLAlchemy, then create the database schema from those values as sort of the opposite of introspection.
+into SQLAlchemy, then create the database schema from those values as sort of the opposite of introspection. 
 
-This should definitely not be used by anyone at this point, and is very much a toy.
-
-I'll update this as the tool progresses.
+This should definitely not be used by anyone at this point, and is very much a toy.  I'll update this as that changes.
 
 The basic ideas is that we're trying to extract data from spreadsheets and store it. There is already a system in place that will take a spreadsheet and allow users to specify things like "this column is populated with strings," and "this column is populated with integers" (still need to figure out datetimes, but that'll need a conversation.)
+
+* If you haven't already written a data type parser, you could use [BurntSushi's XSV tool](https://github.com/BurntSushi/xsv/) to infer columnar values and at least get the least-permissable data type for a given column.
 
 If we can convert that mapping data into a simple, storable JSON, then we can persist the table definition for later use in querying as well as to create the ORM model (which yields the side benefit of creating the table,) persist data from the spreadsheet to the table, and we can then feather back in the schema definition for result mapping. 
 
