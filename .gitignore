@@ -1,1 +1,6 @@
 temp.db
+**/*.swp
+*/*.swp
+*~
+*.swp
+*.swo
