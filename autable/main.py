@@ -9,17 +9,18 @@ _column_types = {
 }
 
 
-def create_table_mapping(schema):
+def create_table_from_schema(schema, id_field="auto"):
     clsdict = { "__tablename__": schema["tablename"] }
 
-    # Add an 'id' field. Every table should have an id.
-    clsdict.update({
-        "id": Column(Integer, primary_key=True)
-    })
+    if id_field == "auto":
+        clsdict.update({
+            "id": Column(Integer, primary_key=True)
+        })
+
     for rec in schema["columns"]:
         clsdict.update({
             rec["name"]: Column(
-                _column_types[rec["type"]], primary_key=rec.get("is_pk", False)
+                _column_types[rec["type"]], primary_key=rec.get("pk", False)
             )
         })
     return type(schema["classname"], (Base, ), clsdict)
@@ -34,7 +35,7 @@ if __name__ == "__main__":
             {"name": "column2", "type": "integer"},
         ],
     }
-    MyClass = create_table_mapping(schema)
+    MyClass = create_table_from_schema(schema)
     engine =  create_engine("sqlite:///temp.db", echo=False)
     Base.metadata.create_all(engine)
 
