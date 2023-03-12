@@ -86,6 +86,20 @@ def main():
 
 ## TODO
 
-* Add more table types
+* Support for more generic table types
+  - BigInteger
+  - Boolean
+  - Date
+  - DateTime
+  - Enum
+  - Float
+  - Interval
+  - Numeric 
+  - PickleType 
+  - SmallInteger 
+  - Text 
+  - Time 
+  - Unicode 
+  - UnicodeText 
 * Possibly derive data attributes from a given spreadsheet 
 * ID column should be optional and/or optionally not be an Integer
