@@ -7,6 +7,10 @@ This should definitely not be used by anyone at this point, and is very much a t
 
 I'll update this as the tool progresses. 
 
+The basic ideas is that we're trying to extract data from spreadsheets and store it. There is already a system in place that will take a spreadsheet and allow users to specify things like "this column is populated with strings," and "this column is populated with integers" (still need to figure out datetimes, but that'll need a conversation.)
+
+If we can convert that mapping data into a simple, storable JSON, then we can persist the table definition for later use in querying as well as to create the ORM model (which yields the side benefit of creating the table,) persist data from the spreadsheet to the table, and we can then feather back in the schema definition for result mapping. 
+
 ## Installation
 
 In a virtualenvironment, `pip install -r requirements.txt`
